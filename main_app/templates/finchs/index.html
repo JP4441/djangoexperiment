@@ -5,16 +5,25 @@
 {% for finch in finchs %}
 
 <div class="card teal lighten-2">
-  <div class="card-content">
-    <span class="card-title">{{ finch.name }}</span>
-    <p>Breed: {{ finch.breed }}</p>
-    <p>Description: {{ finch.description }}</p>
-    {% if finch.age > 0 %}
-    <p>Age: {{ finch.age }}</p>
-    {% else %}
-    <p>Age: In Egg</p>
-    {% endif %}
-  </div>
+  <a href="{% url 'detail' finch.id %}">
+    <div class="card-content">
+      <div class="flex-container">
+        <div>
+          <span class="card-title">{{ finch.name }}</span>
+          <p>Breed: {{ finch.breed }}</p>
+          <p>Description: {{ finch.description }}</p>
+          {% if finch.age > 0 %}
+          <p>Age: {{ finch.age }}</p>
+          {% else %}
+          <p>Age: In Egg</p>
+          {% endif %}
+        </div>
+        <div class="right">
+          <img width="100px" height="100px" src="{{finch.image}}" />
+        </div>
+      </div>
+    </div>
+  </a>
 </div>
 
 {% endfor %} {% endblock %}
