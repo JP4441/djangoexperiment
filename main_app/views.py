@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Add the following import
 from django.http import HttpResponse
 from .models import Finch
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Define the home view
 
@@ -28,6 +28,11 @@ def finchs_detail(request, finch_id):
   finch = Finch.objects.get(id=finch_id)
   return render(request, 'finchs/detail.html', {'finch': finch})
 
+class FinchUpdate(UpdateView):
+  model = Finch
+  fields = ['breed', 'description', 'age']
 
-
+class FinchDelete(DeleteView):
+  model = Finch
+  success_url = '/finchs/'
 

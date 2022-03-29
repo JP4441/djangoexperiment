@@ -20,6 +20,10 @@
       </div>
     </div>
   </div>
+  <div class="card-action">
+    <a href="{% url 'finchs_update' finch.id %}">Edit</a>
+    <a href="{% url 'finchs_delete' finch.id %}">delete</a>
+  </div>
 </div>
 
 {% endblock %}
