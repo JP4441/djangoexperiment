@@ -1,9 +1,11 @@
+from pyexpat import model
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from .models import Finch
+from .models import Finch, Toy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import FeedingForm
+from django.views.generic import ListView, DetailView
 
 # Define the home view
 
@@ -45,4 +47,24 @@ class FinchUpdate(UpdateView):
 class FinchDelete(DeleteView):
   model = Finch
   success_url = '/finchs/'
+
+###These are classes for TOYS view etc all created by the django framework
+
+class ToyList(ListView):
+  model = Toy
+
+class ToyDetail(DetailView):
+  model = Toy
+
+class ToyCreate(CreateView):
+  model = Toy
+  fields = '__all__'
+
+class ToyUpdate(UpdateView):
+  model = Toy
+  fields = ['name','color']
+
+class ToyDelete(DeleteView):
+  model = Toy
+  success_url = '/toys/'
 
