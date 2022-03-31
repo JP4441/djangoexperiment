@@ -28,6 +28,7 @@ class Finch(models.Model):
   description = models.TextField(max_length=250)
   age = models.IntegerField()
   image = models.CharField(default = None, blank= True, null = True, max_length=2000)
+  toys = models.ManyToManyField(Toy)
 
 
 ## redirecting user to details after uploading new finch profile
