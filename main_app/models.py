@@ -1,6 +1,9 @@
 from secrets import choice
 from django.db import models
 from django.urls import reverse
+from datetime import date
+from django.contrib.auth.models import User
+
 
 
 # Create your models here.
@@ -29,6 +32,7 @@ class Finch(models.Model):
   age = models.IntegerField()
   image = models.CharField(default = None, blank= True, null = True, max_length=2000)
   toys = models.ManyToManyField(Toy)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 ## redirecting user to details after uploading new finch profile
